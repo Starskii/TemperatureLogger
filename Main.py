@@ -52,9 +52,9 @@ def run_app():
             'celsius': float(temp_c),
             'fahrenheit': float(temp_f)
         }
+
         db.child("mlx90614").child("1-set").set(data)
-        result = db.child("mlx90614").child("2-push").push(data)
-        print(result)
+        db.child("mlx90614").child("2-push").push(data)
         time.sleep(int(delay))
 
 
