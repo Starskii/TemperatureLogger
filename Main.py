@@ -1,14 +1,23 @@
 import os
 import glob
 import time
-from firebase import firebase
+import pyrebase
 
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
 base_dir = '/sys/bus/w1/devices/'
 device_folder = glob.glob(base_dir + '28*')[0]
 device_file = device_folder + '/w1_slave'
-firebase = firebase.FirebaseApplication('https://temperaturelogger-a3bf4-default-rtdb.firebaseio.com/', None)
+
+config = {
+  "apiKey": "cK3WiFWvH1r0CFpQtWOFQwv7Wsu939u6GPL3LAm0",
+  "authDomain": "temperaturelogger-a3bf4.firebaseapp.com",
+  "databaseURL": "temperaturelogger-a3bf4-default-rtdb.firebaseio.com",
+  "storageBucket": "temperaturelogger-a3bf4.appspot.com"
+}
+
+firebase = pyrebase.initialize_app(config)
+db = firebase.database()
 
 
 def read_temp_raw():
@@ -44,7 +53,8 @@ def run_app():
             'celsius': float(temp_c),
             'fahrenheit': float(temp_f)
         }
-        result = firebase.post('/python-sample-ed7f7/Students/', data)
+        db.child("mlx90614").child("1-set").set(data)
+        result = db.child("mlx90614").child("2-push").push(data)
         print(result)
         time.sleep(int(delay))
 
