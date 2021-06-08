@@ -12,7 +12,7 @@ device_file = device_folder + '/w1_slave'
 config = {
   "apiKey": "cK3WiFWvH1r0CFpQtWOFQwv7Wsu939u6GPL3LAm0",
   "authDomain": "temperaturelogger-a3bf4.firebaseapp.com",
-  "databaseURL": "temperaturelogger-a3bf4-default-rtdb.firebaseio.com",
+  "databaseURL": "https://temperaturelogger-a3bf4-default-rtdb.firebaseio.com/",
   "storageBucket": "temperaturelogger-a3bf4.appspot.com"
 }
 
