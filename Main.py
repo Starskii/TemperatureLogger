@@ -1,7 +1,7 @@
 import os
 import glob
 import time
-import pyrebase
+from pyrebase import pyrebase
 
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
