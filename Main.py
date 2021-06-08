@@ -3,6 +3,7 @@ import glob
 import time
 from pyrebase import pyrebase
 
+print("Hello World")
 os.system('modprobe w1-gpio')
 os.system('modprobe w1-therm')
 base_dir = '/sys/bus/w1/devices/'
