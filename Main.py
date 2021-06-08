@@ -53,8 +53,8 @@ def run_app():
             'fahrenheit': float(temp_f)
         }
 
-        db.child("TemperatureLogs").child("1-set").set(data)
-        db.child("TemperatureLogs").child("2-push").push(data)
+        db.child("TemperatureLogs").child("set").set(data)
+        db.child("TemperatureLogs").child("push").push(data)
         time.sleep(int(delay))
 
 
