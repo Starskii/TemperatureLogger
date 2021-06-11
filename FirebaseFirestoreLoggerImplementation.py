@@ -43,8 +43,8 @@ def run_app():
     name = input("Enter Name: ")
     print("Take temperature read every (how many seconds?)")
     delay = input("Enter Delay Time: ")
-    now = dt.now()
     while True:
+        now = dt.now()
         temp_c = read_temp()
         temp_f = temp_c * 9.0 / 5.0 + 32.0
         data = {
