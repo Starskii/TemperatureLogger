@@ -1,6 +1,7 @@
 import os
 import glob
 import time
+from datetime import datetime as dt
 from pyrebase import pyrebase
 
 os.system('modprobe w1-gpio')
@@ -42,14 +43,16 @@ def read_temp():
 def run_app():
     print("What is the name of this logger? \n")
     name = input("Enter Name: ")
-    print("Take temperature read every (how many seconds?)")
+    print("Take temperature read every (how many seconds?) \n")
     delay = input("Enter Delay Time: ")
     while True:
         temp_c = read_temp()
         temp_f = temp_c * 9.0 / 5.0 + 32.0
+        now = dt.now()
         data = {
             'name': str(name),
             'celsius': float(temp_c),
+            'datetime': str(now),
             'fahrenheit': float(temp_f)
         }
 
