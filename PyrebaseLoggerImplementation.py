@@ -1,7 +1,6 @@
 import os
 import glob
 import time
-from datetime import datetime as dt
 from pyrebase import pyrebase
 
 os.system('modprobe w1-gpio')
@@ -48,11 +47,9 @@ def run_app():
     while True:
         temp_c = read_temp()
         temp_f = temp_c * 9.0 / 5.0 + 32.0
-        now = dt.now()
         data = {
             'name': str(name),
             'celsius': float(temp_c),
-            'datetime': str(now),
             'fahrenheit': float(temp_f)
         }
 

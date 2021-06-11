@@ -4,6 +4,8 @@ import time
 import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore
+from datetime import datetime as dt
+
 
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred)
@@ -41,11 +43,13 @@ def run_app():
     name = input("Enter Name: ")
     print("Take temperature read every (how many seconds?)")
     delay = input("Enter Delay Time: ")
+    now = dt.now()
     while True:
         temp_c = read_temp()
         temp_f = temp_c * 9.0 / 5.0 + 32.0
         data = {
             'name': str(name),
+            'datetime': str(now),
             'celsius': float(temp_c),
             'fahrenheit': float(temp_f)
         }
