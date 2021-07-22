@@ -39,6 +39,8 @@ def read_temp():
 
 
 def run_app():
+    print("What is the ID of this device?");
+    deviceID = input("Enter Device ID: ");
     print("What is the name of this logger? \n")
     name = input("Enter Name: ")
     print("Take temperature read every (how many seconds?)")
@@ -53,7 +55,7 @@ def run_app():
             'celsius': float(temp_c),
             'fahrenheit': float(temp_f)
         }
-        db.collection('temperature-logs').add(data)
+        db.collection('temperature-logs/' + deviceID).add(data)
         time.sleep(int(delay))
 
 
